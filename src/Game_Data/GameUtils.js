@@ -1,3 +1,5 @@
+//--------------Board construction-----------------------------------------//
+
 /**
  * Initializes a game grid
  */
@@ -6,7 +8,7 @@ const initializeGrid = (gridSize) => {
     for (let i = 0; i < gridSize; i++) {
         grid[i] = new Array(gridSize);
         for (let k = 0; k < gridSize; k++) {
-            grid[i][k] = GameUtils.generateSquare();
+            grid[i][k] = generateSquare();
         }
     }
     const validDirections = ['Up', 'Right', 'Down', 'Left'];
@@ -31,6 +33,7 @@ const generateSquare = () => {
     }
 }
 
+//------------------------Render Functions----------------------------------//
 /** 
  * Renders a square based on its game square object
  */

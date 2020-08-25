@@ -1,5 +1,5 @@
 import React from 'react';
-import GameContext from './GameContext';
+import GameContext from '../Game_Data/GameContext';
 
 export default class GameSprite extends React.Component {
 

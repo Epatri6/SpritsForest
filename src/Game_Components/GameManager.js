@@ -1,24 +1,11 @@
 import React from 'react';
 import GameGrid from './GameGrid/GameGrid';
-import GameContext from './GameContext';
-import GameUtils from './GameUtils';
+import GameContext from '../Game_Data/GameContext';
+import GameBoard from '../Game_Data/GameBoard';
 
 export default class GameManager extends React.Component {
 
     //----------------------------------Game Logic-------------------------------------------------------//
-    
-    /**
-     * Sets up the game board
-     */
-    initializeGrid = () => {
-        const gridSize = 7;
-        this.setState({
-            fps: 30,
-            time: 0,
-            gridSize: gridSize,
-            grid: GameUtils.initializeGrid(gridSize)
-        });
-    }
 
     /**
      * Wait for a bit, then update game state
@@ -40,7 +27,11 @@ export default class GameManager extends React.Component {
 
     constructor(props) {
         super(props);
-        this.initializeGrid();
+        this.state = {
+            fps: 30,
+            time: 0,
+            gameBoard: GameBoard
+        };
     }
 
     componentDidMount = () => {
@@ -51,8 +42,7 @@ export default class GameManager extends React.Component {
         const contextValue = {
             time: this.state.time,
             fps: this.state.fps,
-            gridSize: this.state.gridSize,
-            grid: this.state.grid
+            gameBoard: this.state.gameBoard
         }
         return (
             <GameContext.Provider value={contextValue}>

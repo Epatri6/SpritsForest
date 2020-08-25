@@ -1,5 +1,5 @@
 import React from 'react';
-import GameManager from './GameManager';
+import GameManager from './Game_Components/GameManager';
 
 function App() {
   return (

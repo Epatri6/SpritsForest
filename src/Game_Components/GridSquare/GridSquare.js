@@ -1,8 +1,8 @@
 import React from 'react';
-import {gridSquare} from '../sprites/index';
+import {gridSquare} from '../../sprites/index';
 import GameSprite from '../GameSprite';
-import GameContext from '../GameContext';
-import GameUtils from '../GameUtils';
+import GameContext from '../../Game_Data/GameContext';
+import GameUtils from '../../Game_Data/GameUtils';
 import './GridSquare.css';
 
 export default class GridSquare extends React.Component {
@@ -11,7 +11,7 @@ export default class GridSquare extends React.Component {
 
     renderGameState = () => {
         const {location} = this.props;
-        const {grid, gridSize} = this.context;
+        const {grid, gridSize} = this.context.gameBoard;
         const row = Math.floor(location / gridSize);
         const gameObj = grid[row][location - (row * gridSize)];
         return (
