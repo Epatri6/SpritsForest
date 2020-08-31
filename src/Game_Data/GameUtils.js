@@ -11,9 +11,9 @@ const initializeGrid = (gridSize) => {
             grid[i][k] = generateSquare();
         }
     }
-    const validDirections = ['Up', 'Right', 'Down', 'Left'];
+    const validDirections = ['up', 'right', 'down', 'left'];
     grid[3][3] = {
-        name: 'Start',
+        name: 'start',
         direction: validDirections[Math.floor(validDirections.length * Math.random())]
     }
     return grid;
@@ -23,12 +23,12 @@ const initializeGrid = (gridSize) => {
  * Generates a random game square object
  */
 const generateSquare = () => {
-    const validNames = ['AddFlow', 'SubtractFlow', 'Empty'];
-    const validDirections = ['Up', 'Right', 'Down', 'Left', 'None', 'None', 'None', 'None'];
+    const validNames = ['addFlow', 'subtractFlow', 'empty'];
+    const validDirections = ['up', 'right', 'down', 'left', 'none', 'none', 'none', 'none'];
     const name = validNames[Math.floor(validNames.length * Math.random())];
     return {
         name: name,
-        direction: (name === 'Empty') ? '' : validDirections[Math.floor(validDirections.length * Math.random())],
+        direction: (name === 'empty') ? '' : validDirections[Math.floor(validDirections.length * Math.random())],
         passed: false
     }
 }
@@ -40,13 +40,13 @@ const generateSquare = () => {
 const renderSquareState = (gameObj) => {
     let res = ''
     switch(gameObj.name) {
-        case 'AddFlow':
+        case 'addFlow':
             res += '+1';
             break;
-        case 'SubtractFlow':
+        case 'subtractFlow':
             res += '-1';
             break;
-        case 'Start':
+        case 'start':
             res += 'Start';
             break;
         default:
@@ -54,16 +54,16 @@ const renderSquareState = (gameObj) => {
     }
     res += ' '
     switch(gameObj.direction) {
-        case 'Up':
+        case 'up':
             res += '\u2191';
             break;
-        case 'Right':
+        case 'right':
             res += '\u2192';
         break;
-        case 'Down':
+        case 'down':
             res += '\u2193';
         break;
-        case 'Left':
+        case 'left':
             res += '\u2190';
         break;
         default:
@@ -72,8 +72,41 @@ const renderSquareState = (gameObj) => {
     return res;
 }
 
+//-------------------------------Board Manipulation----------------------------------//
+
+/**
+ * Updates a square on the gameboard
+ */
+const updateSquare = (gameBoard, squareIndex, mechanic) => {
+    const newBoard = {...gameBoard};
+    getGameObject(newBoard, squareIndex).direction = mechanic;
+    return newBoard;
+}
+
+//---------------------------Helper Functions--------------------------------------//
+
+/**
+ * Returns the gameobject from the gameboard given
+ * its location
+ */
+const getGameObject = (gameboard, location) => {
+    const {grid, gridSize} = gameboard;
+    const row = Math.floor(location / gridSize);
+    return grid[row][location - (row * gridSize)];
+}
+
+/**
+ * Determines if a square index belongs to the start square
+ */
+const isStart = (gameBoard, squareIndex) => {
+    return getGameObject(gameBoard, squareIndex).name === 'start';
+}
+
 export default {
     renderSquareState,
     generateSquare,
-    initializeGrid
+    initializeGrid,
+    updateSquare,
+    getGameObject,
+    isStart
 }

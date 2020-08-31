@@ -11,9 +11,7 @@ export default class GridSquare extends React.Component {
 
     renderGameState = () => {
         const {location} = this.props;
-        const {grid, gridSize} = this.context.gameBoard;
-        const row = Math.floor(location / gridSize);
-        const gameObj = grid[row][location - (row * gridSize)];
+        const gameObj = GameUtils.getGameObject(this.context.gameBoard, location);
         return (
             <div className='square-state'>
                 {GameUtils.renderSquareState(gameObj)}
@@ -22,8 +20,10 @@ export default class GridSquare extends React.Component {
     }
 
     render() {
+        const {placeMechanic} = this.context;
+        const {location} = this.props;
         return (
-            <div className='square'>
+            <div className='square' onClick={() => placeMechanic(location)}>
                 <GameSprite fps={0} sprites={gridSquare}/>
                 {this.renderGameState()}
             </div>
