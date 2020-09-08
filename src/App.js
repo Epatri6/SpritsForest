@@ -1,10 +1,10 @@
 import React from 'react';
-import GameManager from './Game_Manager/GameManager';
+import LoginScreen from './Web_Components/Login_Screen/LoginScreen';
 
 function App() {
   return (
     <main className='App'>
-      <GameManager />
+      <LoginScreen />
     </main>
   );
 }
