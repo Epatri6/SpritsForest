@@ -24,7 +24,7 @@ const initializeGrid = (gridSize) => {
  */
 const generateSquare = () => {
     const validNames = ['addFlow', 'subtractFlow', 'empty'];
-    const validDirections = ['up', 'right', 'down', 'left', 'none', 'none', 'none', 'none'];
+    const validDirections = ['up', 'right', 'down', 'left', '', '', '', ''];
     const name = validNames[Math.floor(validNames.length * Math.random())];
     return {
         name: name,

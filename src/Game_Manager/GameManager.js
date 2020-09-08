@@ -3,6 +3,7 @@ import GameGrid from '../Game_Components/GameGrid/GameGrid';
 import GameContext from '../Game_Data/GameContext';
 import GameBoard from '../Game_Data/GameBoard';
 import GameUtils from '../Game_Data/GameUtils';
+import GameEvaluation from '../Game_Data/GameEvaluation';
 import ControlsPanel from '../Game_Components/Controls_Panel/ControlsPanel';
 import './GameManager.css';
 
@@ -56,6 +57,14 @@ export default class GameManager extends React.Component {
         })
     }
 
+    /**
+     * Evaluate the gameboard
+     */
+    evaluateBoard = () => {
+        const {gameBoard} = this.state;
+        this.setState({won: GameEvaluation.evaluateBoard(gameBoard)});
+    }
+
     //-----------------------------Life Cycle Methods--------------------------------------------------------//
 
     constructor(props) {
@@ -64,7 +73,8 @@ export default class GameManager extends React.Component {
             fps: 0.1,
             time: 0,
             gameBoard: GameBoard,
-            selectedMechanic: {name: '', direction: ''}
+            selectedMechanic: {name: '', direction: ''},
+            won: false
         };
     }
 
@@ -79,7 +89,9 @@ export default class GameManager extends React.Component {
             gameBoard: this.state.gameBoard,
             setSelectedMechanic: this.setSelectedMechanic,
             placeMechanic: this.placeMechanic,
-            selectedMechanic: this.state.selectedMechanic
+            selectedMechanic: this.state.selectedMechanic,
+            won: this.state.won,
+            evaluateBoard: this.evaluateBoard
         }
         return (
             <GameContext.Provider value={contextValue}>

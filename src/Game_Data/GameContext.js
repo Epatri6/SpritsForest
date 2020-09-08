@@ -6,5 +6,7 @@ export default React.createContext({
     gameBoard: {},
     selectedMechanic: {},
     setSelectedMechanic: () => {},
-    placeMehanic: () => {}
+    placeMehanic: () => {},
+    won: false,
+    evaluateBoard: () => {}
 });
