@@ -12,7 +12,7 @@ import './GameManager.css';
 import {
   spritWaveSprites,
   spritSadSprites,
-  spritHappySprites,
+  spritWinSprites
 } from '../sprites/index';
 
 export default class GameManager extends React.Component {
@@ -167,7 +167,7 @@ export default class GameManager extends React.Component {
   createWinPopUp = () => {
     this.setState({
       popUp: (
-        <PopUpScreen message={'You win!'} sprites={spritHappySprites} fps={10}>
+        <PopUpScreen message={'You win!'} sprites={spritWinSprites} fps={10}>
           <button
             className="pop-up-button"
             onClick={(e) => this.loadNewLevel(e)}
