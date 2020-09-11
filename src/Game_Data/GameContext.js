@@ -7,6 +7,8 @@ export default React.createContext({
     selectedMechanic: {},
     setSelectedMechanic: () => {},
     placeMehanic: () => {},
-    won: false,
-    evaluateBoard: () => {}
+    evaluateBoard: () => {},
+    resetBoard: () => {},
+    loadLevel: () => {},
+    saveLevel: () => {}
 });

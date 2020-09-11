@@ -11,7 +11,7 @@ export default class GridSquare extends React.Component {
 
     renderGameState = () => {
         const {location} = this.props;
-        const gameObj = GameUtils.getGameObject(this.context.gameBoard, location);
+        const gameObj = GameUtils.getGameObject(this.context.gameBoard, location)
         return (
             <div className='square-state'>
                 {GameUtils.renderSquareState(gameObj)}

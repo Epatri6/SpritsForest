@@ -1,0 +1,34 @@
+.pop-up-screen {
+  height: 700px;
+  width: 950px;
+  display: flex;
+  flex-direction: column;
+  border-style: solid;
+  border-color: black;
+  color: white;
+  border-width: 10px;
+  align-items: center;
+  justify-content: space-evenly;
+  background: #021C29;
+  font-size: 48px;
+}
+
+.pop-up-screen img {
+  width: 300px;
+  height: 300px
+}
+
+.pop-up-button {
+  width: 100px;
+  height: 50px;
+  background-image: url('../../sprites/button.png');
+  background-size: 100% 100%;
+  color: white;
+  margin-right: 10px;
+}
+
+.pop-up-button-row {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+}

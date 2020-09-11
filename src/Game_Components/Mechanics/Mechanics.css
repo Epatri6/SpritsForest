@@ -1,5 +1,10 @@
 .mechanics {
     display: flex;
+    flex-direction: column;
+    color: white;
+}
+.redirects {
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
     width: 240px;

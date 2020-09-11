@@ -20,7 +20,7 @@ export default class AccountFrom extends React.Component {
 
   onSubmitForm = (event) => {
     event.preventDefault();
-    this.props.handleSubmit(this.state);
+    this.props.handleSubmit({...this.state});
   };
 
   render() {

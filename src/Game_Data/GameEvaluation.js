@@ -55,7 +55,6 @@ const evaluateSquares = (gameBoard) => {
       break;
   }
   //Keep evaluating
-  console.log(currSquare, direction, flow)
   return evaluateSquares(gameBoard);
 };
 
@@ -64,7 +63,6 @@ const evaluateSquares = (gameBoard) => {
  */
 const initialize = (gameBoard) => {
   flow = 3;
-  won = false;
   currSquare = Math.floor((Math.pow(gameBoard.gridSize, 2) - 1) / 2);
   direction = '';
 };
@@ -73,10 +71,10 @@ const initialize = (gameBoard) => {
  * Evaluates gameboard to see if it wins or loses
  */
 const evaluateBoard = (gameBoard) => {
+  gameBoard = GameUtils.clearPassed(gameBoard);
   initialize(gameBoard);
   evaluateSquares(gameBoard);
   if(flow <= 0) {
-    won = true;
     return true;
   }
   return false;
@@ -84,7 +82,6 @@ const evaluateBoard = (gameBoard) => {
 
 let flow = 3;
 let currSquare = -1;
-let won = false;
 let direction = '';
 
 export default {
@@ -93,6 +90,5 @@ export default {
   evaluateSquares,
   flow,
   currSquare,
-  won,
   direction
 }
