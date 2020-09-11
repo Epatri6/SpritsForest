@@ -26,7 +26,7 @@ export default class AccountFrom extends React.Component {
   render() {
     return (
       <Fragment>
-        <form className="account-form" onSubmit={(e) => this.onSubmitForm(e)}>
+        <form className="account-form" autoComplete="off" onSubmit={(e) => this.onSubmitForm(e)}>
           <h2>{this.props.title}</h2>
           <span className="input-row">
             <label htmlFor="username">Username:</label>

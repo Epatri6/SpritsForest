@@ -119,6 +119,7 @@ const resetBoard = (gameBoard) => {
     for(let i = 0; i < Math.pow(newBoard.gridSize, 2); i++) {
         const square = getGameObject(newBoard, i);
         square.passed = false;
+        square.selected = false;
         square.mechanicPlaced = false;
         square.direction = square.originalDirection;
     }
@@ -134,7 +135,9 @@ const clearPassed = (gameBoard) => {
         redirects: 0
     };
     for(let i = 0; i < Math.pow(newBoard.gridSize, 2); i++) {
-        getGameObject(newBoard, i).passed = false;
+        const square = getGameObject(newBoard, i);
+        square.passed = false;
+        square.selected = false;
     }
     return newBoard;
 }

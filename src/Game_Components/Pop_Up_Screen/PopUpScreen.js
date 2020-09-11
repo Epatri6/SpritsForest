@@ -1,5 +1,5 @@
 import React from 'react';
-import GameSprite from '../GameSprite';
+import GameSprite from '../Game_Sprite/GameSprite';
 import './PopUpScreen.css';
 
 export default class PopUpScreen extends React.Component {

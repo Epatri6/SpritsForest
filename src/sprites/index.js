@@ -49,6 +49,7 @@ import sprit_happy_32 from './sprit_happy_32.png';
 import sprit_happy_33 from './sprit_happy_33.png';
 import sprit_happy_34 from './sprit_happy_34.png';
 import grid_square from './Grid_Square.png';
+import grid_square_selected from './Grid_Square_Selected.png';
 import up from './up_arrow.png';
 import down from './down_arrow.png';
 import right from './right_arrow.png';
@@ -58,4 +59,5 @@ export const spritWaveSprites = [sprit_wave_1, sprit_wave_2, sprit_wave_3, sprit
 export const spritSadSprites = [sprit_sad_1, sprit_sad_2, sprit_sad_3, sprit_sad_4, sprit_sad_5, sprit_sad_6, sprit_sad_7, sprit_sad_8, sprit_sad_9, sprit_sad_10, sprit_sad_11, sprit_sad_12];
 export const spritHappySprites = [sprit_happy_1, sprit_happy_2, sprit_happy_3, sprit_happy_4, sprit_happy_5, sprit_happy_6, sprit_happy_7, sprit_happy_8, sprit_happy_9, sprit_happy_10, sprit_happy_11, sprit_happy_12, sprit_happy_13, sprit_happy_14, sprit_happy_15, sprit_happy_16, sprit_happy_17, sprit_happy_18, sprit_happy_19, sprit_happy_20, sprit_happy_21, sprit_happy_22, sprit_happy_23, sprit_happy_24, sprit_happy_25, sprit_happy_26, sprit_happy_27, sprit_happy_28, sprit_happy_29, sprit_happy_30, sprit_happy_31, sprit_happy_32, sprit_happy_33, sprit_happy_34];
 export const gridSquare = [grid_square];
+export const gridSquareSelected = [grid_square_selected];
 export const arrows = {up, down, left, right};

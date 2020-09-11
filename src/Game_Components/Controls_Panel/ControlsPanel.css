@@ -10,7 +10,6 @@
     border-color: black;
 }
 
-
 .mechanics-panel {
     display: flex;
     flex-direction: column;
@@ -21,3 +20,21 @@
     border-width: 5px;
     width: 250px;
 }
+
+.eval-panel {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.eval-sprit {
+    height: 50%;
+}
+
+.eval-row {
+    text-align: center;
+    font-size: xx-large;
+    border-color: white;
+}
+

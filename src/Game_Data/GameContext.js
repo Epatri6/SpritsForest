@@ -1,12 +1,11 @@
 import React from 'react';
 
 export default React.createContext({
-    time: 0,
-    fps: 30,
     gameBoard: {},
     selectedMechanic: {},
+    gameEval: {},
     setSelectedMechanic: () => {},
-    placeMehanic: () => {},
+    placeMechanic: () => {},
     evaluateBoard: () => {},
     resetBoard: () => {},
     loadLevel: () => {},

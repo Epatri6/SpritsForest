@@ -83,7 +83,7 @@ class AccountEditForm extends React.Component {
     return (
       <div className="account-edit-screen">
         <h1>Sprit's Forest</h1>
-        <form className="account-form" onSubmit={(e) => this.onSubmitForm(e)}>
+        <form className="account-form" autoComplete="off" onSubmit={(e) => this.onSubmitForm(e)}>
           <h2>Update Account Information</h2>
           <span className="input-row">
             <label htmlFor="username">Username:</label>

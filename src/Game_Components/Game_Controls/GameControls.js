@@ -2,7 +2,7 @@ import React from 'react';
 import GameContext from '../../Game_Data/GameContext';
 import './GameControls.css';
 import {spritHappySprites} from '../../sprites/index';
-import GameSprite from '../GameSprite';
+import GameSprite from '../Game_Sprite/GameSprite';
 
 export default class GameControls extends React.Component {
   static contextType = GameContext;

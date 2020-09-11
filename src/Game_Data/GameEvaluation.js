@@ -4,16 +4,15 @@ import GameUtils from './GameUtils';
 /**
  * Evaluates a square of a gameboard
  */
-const evaluateSquares = (gameBoard) => {
-
-  const {gridSize} = gameBoard;
+const evaluateSquare = (gameEval, gameBoard) => {
+  const { gridSize } = gameBoard;
   const boardLength = Math.pow(gridSize, 2);
-  
-  //Boundary check
-  if(currSquare < 0 || currSquare >= boardLength) {
-    return;
-  }
-  const square = GameUtils.getGameObject(gameBoard, currSquare);
+  let currSquareIndex = gameEval.currSquareIndex;
+  let direction = gameEval.direction;
+  let flow = gameEval.flow;
+
+  const square = GameUtils.getGameObject(gameBoard, currSquareIndex);
+  square.selected = false;
   //Modify flow based on square
   switch (square.name) {
     case 'addFlow':
@@ -26,69 +25,109 @@ const evaluateSquares = (gameBoard) => {
       break;
   }
   //Modify direction travel based on square
-  direction = (square.direction && !square.passed ? square.direction : direction);
-  GameUtils.getGameObject(gameBoard, currSquare).passed = true;
+  direction = square.direction && !square.passed ? square.direction : direction;
+  GameUtils.getGameObject(gameBoard, currSquareIndex).passed = true;
   //Determine next path
-  const offset = Math.floor(currSquare / gridSize);
-  switch(direction) {
+  const offset = Math.floor(currSquareIndex / gridSize);
+  switch (direction) {
     case 'up':
-      currSquare -= gridSize;
+      currSquareIndex -= gridSize;
       break;
     case 'right':
-      if(currSquare - (offset * gridSize) === gridSize - 1) {
-        currSquare = boardLength;
+      if (currSquareIndex - offset * gridSize === gridSize - 1) {
+        currSquareIndex = boardLength;
         break;
       }
-      currSquare++;
+      currSquareIndex++;
       break;
     case 'down':
-      currSquare += gridSize;
+      currSquareIndex += gridSize;
       break;
     case 'left':
-      if(currSquare - (offset * gridSize) === 0) {
-        currSquare = boardLength;
+      if (currSquareIndex - offset * gridSize === 0) {
+        currSquareIndex = boardLength;
         break;
       }
-      currSquare--;
+      currSquareIndex--;
       break;
     default:
       break;
   }
-  //Keep evaluating
-  return evaluateSquares(gameBoard);
+  //Boundary check
+  if (currSquareIndex < 0 || currSquareIndex >= boardLength) {
+    return {
+      ...gameEval,
+      gameBoard,
+      flow,
+      currSquareIndex,
+      direction,
+      running: false,
+      finished: true,
+      won: flow <= 0,
+    };
+  }
+  //Select next square
+  const newSquare = GameUtils.getGameObject(gameBoard, currSquareIndex);
+  newSquare.selected = true;
+  return {
+    ...gameEval,
+    gameBoard,
+    flow,
+    currSquareIndex,
+    direction: direction,
+    displayDirection: newSquare.passed ? direction : newSquare.direction
+  };
+};
+
+const initialize = () => {
+  return {
+    flow: 3,
+    currSquareIndex: -1,
+    direction: '',
+    running: false,
+    won: false,
+    gameBoard: '',
+    displayDirection: ''
+  };
 };
 
 /**
  * Initializes object for evaluations
  */
-const initialize = (gameBoard) => {
-  flow = 3;
-  currSquare = Math.floor((Math.pow(gameBoard.gridSize, 2) - 1) / 2);
-  direction = '';
+const initializeEval = (gameEval, gameBoard) => {
+  gameEval.flow = 3;
+  gameEval.currSquareIndex = Math.floor(
+    (Math.pow(gameBoard.gridSize, 2) - 1) / 2
+  );
+  const square = GameUtils.getGameObject(gameBoard, gameEval.currSquareIndex);
+  square.selected = true;
+  gameEval.direction = square.direction;
+  gameEval.displayDirection = square.direction;
+  gameEval.running = true;
 };
 
 /**
  * Evaluates gameboard to see if it wins or loses
  */
-const evaluateBoard = (gameBoard) => {
-  gameBoard = GameUtils.clearPassed(gameBoard);
-  initialize(gameBoard);
-  evaluateSquares(gameBoard);
-  if(flow <= 0) {
-    return true;
+const evaluateBoard = (gameEval, gameBoard) => {
+  //needed since gameBoard will be a state object - cannot directly edit
+  gameEval = {
+    ...gameEval,
+  };
+  gameBoard = {
+    ...gameBoard,
+  };
+  if (!gameEval.running) {
+    gameBoard = GameUtils.clearPassed(gameBoard);
+    initializeEval(gameEval, gameBoard);
+    gameEval.gameBoard = gameBoard;
+    return gameEval;
   }
-  return false;
+  return evaluateSquare(gameEval, gameBoard);
 };
-
-let flow = 3;
-let currSquare = -1;
-let direction = '';
 
 export default {
   initialize,
   evaluateBoard,
-  evaluateSquares,
-  flow,
-  currSquare,
-  direction
-}
+  evaluateSquare,
+};

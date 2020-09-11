@@ -21,24 +21,6 @@ export default class GameManager extends React.Component {
   //----------------------------------Game Logic-------------------------------------------------------//
 
   /**
-   * Wait for a bit, then update game state
-   */
-  tick = () => {
-    return setTimeout(this.update, 1000 / this.state.fps);
-  };
-
-  /**
-   * Update game state
-   */
-  update = () => {
-    const { fps, time } = this.state;
-    this.setState({
-      time: time + 1 / fps,
-      tick: this.tick(),
-    });
-  };
-
-  /**
    * Clears selected mechanic to place
    */
   clearSelectedMechanic = (e) => {
@@ -76,14 +58,21 @@ export default class GameManager extends React.Component {
    * Evaluate the gameboard
    */
   evaluateBoard = () => {
-    const { gameBoard } = this.state;
-    const {updateScore} = this.context;
-    if (GameEvaluation.evaluateBoard(gameBoard)) {
-      this.createWinPopUp();
-      updateScore(1);
-    } else {
-      this.createLosePopUp();
+    const { gameBoard, gameEval } = this.state;
+    if(gameEval.finished) {
+      if(gameEval.won) {
+        this.createWinPopUp();
+        this.context.updateScore(1)
+      }
+      else {
+        this.createLosePopUp();
+      }
+      this.setState({gameEval: GameEvaluation.initialize()})
+      return;
     }
+    const result = GameEvaluation.evaluateBoard(gameEval, gameBoard);
+    this.setState({gameBoard: result.gameBoard, gameEval: result});
+    setTimeout(this.evaluateBoard, 1000);
   };
 
   /**
@@ -233,22 +222,15 @@ export default class GameManager extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      fps: 30,
-      time: 0,
       gameBoard: GameBoard,
       selectedMechanic: { name: '', direction: '' },
-      tick: '',
       popUp: null,
+      gameEval: GameEvaluation.initialize()
     };
   }
 
   componentDidMount = () => {
-    this.setState({ tick: this.tick() });
     this.loadNewLevel();
-  };
-
-  componentWillUnmount = () => {
-    clearTimeout(this.state.tick);
   };
 
   //Renders popUps
@@ -275,9 +257,8 @@ export default class GameManager extends React.Component {
 
   render() {
     const contextValue = {
-      time: this.state.time,
-      fps: this.state.fps,
       gameBoard: this.state.gameBoard,
+      gameEval: this.state.gameEval,
       setSelectedMechanic: this.setSelectedMechanic,
       placeMechanic: this.placeMechanic,
       selectedMechanic: this.state.selectedMechanic,
