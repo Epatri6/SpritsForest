@@ -22,9 +22,9 @@ Corruption begins at the start square and travels following the arrows.
 
 Arrows are ignored after they're passed the first time (no infinite loops). 
 
-Corruption increase or decreases as it passes +1's and -1's. 
+Corruption increases or decreases as it passes +1's and -1's. 
 
-Corruption starts at 3 and the goal is to have it at 0 by the time it reaches any edge of the board.
+Corruption starts at 3 and the goal is to have it at 0 or less by the time it reaches any edge of the board.
 
 Controls: 
 
