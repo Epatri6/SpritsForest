@@ -38,10 +38,9 @@ Players also have the option to reset the board, save a board state, load their 
 
 Technology
 -----------------------------
-The front-end client uses React. React powers the page layouts
-and functionality. It also powers the game engine via state.
+The front-end client uses React and JavaScript. React powers the page layouts and functionality. It also powers the game engine via state. Vanilla CSS is used for styling.
 
-The back-end api uses Node, Express, and PostgresSQL.
+The back-end api uses JavaScript, Node, Express, and PostgresSQL.
 
 API
 ------------------------------

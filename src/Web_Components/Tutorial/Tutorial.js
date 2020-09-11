@@ -10,7 +10,7 @@ export default class Tutorial extends React.Component {
         <section>
           <h3>Goal</h3>
           {`
-          An evil corruption is spilling into the forest! Lower the corruption before it leaks!
+          An evil corruption is spilling into the forest! Pacify the corruption before it enters the forest!
           `}
         </section>
         <section>
@@ -34,6 +34,7 @@ export default class Tutorial extends React.Component {
           The game's control panel is the right side of the board.\n
           You can left click an arrow to select it, then left click on a square to place it on that square.\n
           Right clicking will deselect arrow.\n
+          You cannot change the start square, but you can replace arrows you've placed\n
           Redirects are limited! Use them wisely\n
           If you're unhappy with your redirect placement, you can reset the board via the Reset Board button.\n
           You can save and load a saved game via the Save Game and Load Game buttons.\n
