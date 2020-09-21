@@ -41,12 +41,12 @@ export default class AccountFrom extends React.Component {
             <label htmlFor="password">Password:</label>
             <input
               onChange={(e) => this.onPasswordChange(e.currentTarget.value)}
-              type="text"
+              type="password"
               name="password"
               required
             />
           </span>
-          <button className="form-button" id="submit">
+          <button className="form-button">
             Submit
           </button>
         </form>

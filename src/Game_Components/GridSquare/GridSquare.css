@@ -6,15 +6,22 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: 100%;
 }
 .square-state {
   position: absolute;
   text-align: center;
-  line-height: 100px;
-  width: 100px;
-  height: 100px;
+  line-height: 650%;
+  width: 100%;
+  height: 100%;
   white-space: pre-wrap;
   color: white;
+}
+
+@media only screen and (max-width: 1000px) {
+  .square-state {
+    line-height: 400%;
+    font-size: x-small;
+  }
 }

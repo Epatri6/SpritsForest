@@ -9,3 +9,10 @@
     border-style: solid;
     border-width: 2px;
 }
+
+@media only screen and (max-width: 1000px) {
+    .placeable-arrow {
+        height: 20px;
+        width: 20px;
+    }
+  }

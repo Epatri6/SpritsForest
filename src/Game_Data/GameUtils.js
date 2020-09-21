@@ -45,6 +45,9 @@ const generateSquare = () => {
  * Renders a square based on its game square object
  */
 const renderSquareState = (gameObj) => {
+    if(!gameObj) {
+        return '';
+    }
     let res = ''
     switch(gameObj.name) {
         case 'addFlow':
@@ -149,6 +152,9 @@ const clearPassed = (gameBoard) => {
  * its location
  */
 const getGameObject = (gameboard, location) => {
+    if(location < 0) {
+        return;
+    }
     const {grid, gridSize} = gameboard;
     const row = Math.floor(location / gridSize);
     return grid[row][location - (row * gridSize)];

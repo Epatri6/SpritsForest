@@ -2,7 +2,7 @@
   border-style: solid;
   border-width: 5px;
   height: 50%;
-  width: 250px;
+  width: 100%;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -17,4 +17,16 @@
   background-image: url('../../sprites/button.png');
   background-size: 100% 100%;
   color: white;
+}
+
+@media only screen and (max-width: 1000px) {
+  .game-controls-panel img {
+    height: 50%;
+  }
+  .game-controls-panel button {
+    width: 80%;
+    height: 15px;
+    font-size: xx-small;
+    margin: 1px;
+  }
 }

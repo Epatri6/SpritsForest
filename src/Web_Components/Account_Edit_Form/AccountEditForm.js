@@ -98,7 +98,7 @@ class AccountEditForm extends React.Component {
             <label htmlFor="password">Password:</label>
             <input
               onChange={(e) => this.onPasswordChange(e.currentTarget.value)}
-              type="text"
+              type="password"
               name="password"
               placeholder='optional'
             />

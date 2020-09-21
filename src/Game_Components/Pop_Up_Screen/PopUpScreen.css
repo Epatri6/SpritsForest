@@ -32,3 +32,20 @@
   flex-direction: row;
   align-self: center;
 }
+
+@media only screen and (max-width: 1000px) {
+  .pop-up-screen {
+    height: 260px;
+    width: 370px;
+    font-size: 24px;
+  }
+
+  .pop-up-screen img {
+    width: 100px;
+    height: 100px
+  }
+
+  .pop-up-button {
+    width: 70px;
+  }
+}

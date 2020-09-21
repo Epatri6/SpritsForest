@@ -30,3 +30,7 @@
   background-size: 100% 100%;
   color: white;
 }
+
+input {
+  box-sizing: border-box;
+}

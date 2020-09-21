@@ -38,3 +38,22 @@
     border-color: white;
 }
 
+@media only screen and (max-width: 1000px) {
+    .control-panel {
+        width: 100px;
+        border-width: 5px;
+    }
+    .mechanics-panel {
+        width: 100px;
+        border-width: 2px;
+    }
+    .eval-row {
+        font-size: small;
+    }
+    .eval-sprit img {
+        height: 100%;
+    }
+    .control-panel {
+        height: 270px;
+    }
+}

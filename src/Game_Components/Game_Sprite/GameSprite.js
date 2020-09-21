@@ -21,6 +21,9 @@ export default class GameSprite extends React.Component {
 
   //Update state, then wait again
   tick = () => {
+    if(this.props.fps <= 0) {
+      return;
+    }
     return setTimeout(this.update, 1000 / this.props.fps);
   };
 

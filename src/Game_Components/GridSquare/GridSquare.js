@@ -15,15 +15,19 @@ export default class GridSquare extends React.Component {
     const gameObj = GameUtils.getGameObject(this.context.gameBoard, location);
     return (
       <div className="square" onClick={() => placeMechanic(location)}>
-        <GameSprite fps={0} sprites={gameObj.selected ? gridSquareSelected : gridSquare} />
+        <GameSprite fps={0} sprites={(gameObj && gameObj.selected) ? gridSquareSelected : gridSquare} />
         <div
           className={`square-state ${
-            gameObj.selected ? 'selected-square' : ''
+            (gameObj && gameObj.selected) ? 'selected-square' : ''
           }`}
         >
           {GameUtils.renderSquareState(gameObj)}
         </div>
       </div>
     );
+  }
+
+  static defaultProps = {
+    location: -1
   }
 }
