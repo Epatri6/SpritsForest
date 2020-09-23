@@ -21,8 +21,8 @@
 
 @media only screen and (max-width: 1000px) {
   .tutorial {
-    width: 375px;
+    width: 340px;
     font-size: small;
-    padding-left: 5px;
+    padding: 0px 5px 0px 5px;
   }
 }

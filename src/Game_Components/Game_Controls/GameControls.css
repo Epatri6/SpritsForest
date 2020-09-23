@@ -21,7 +21,7 @@
 
 @media only screen and (max-width: 1000px) {
   .game-controls-panel img {
-    height: 50%;
+    height: 40%;
   }
   .game-controls-panel button {
     width: 80%;
